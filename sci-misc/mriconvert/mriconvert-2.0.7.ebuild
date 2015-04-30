@@ -23,7 +23,7 @@ IUSE="+man"
 COMMON_DEPEND="
 sys-devel/gcc:*[cxx]
 >=x11-libs/wxGTK-2.8.12:${WX_GTK_VER}[X]
->=dev-libs/boost-1.52.0
+>=dev-libs/boost-1.52.0:=
 "
 DEPEND="${COMMON_DEPEND}
 man? ( sys-apps/help2man )
@@ -33,7 +33,9 @@ RDEPEND="${COMMON_DEPEND}"
 S=${WORKDIR}
 
 src_prepare() {
-	epatch "${FILESDIR}"/mriconvert-2.0.6-accept-boost-shared-libs.patch
+	# Disable the forced use of static libs
+	sed -i '/set( Boost_USE_STATIC_LIBS.*)/d' CMakeLists.txt \
+		|| die 'failed to patch CMakeLists.txt'
 }
 
 src_configure() {
