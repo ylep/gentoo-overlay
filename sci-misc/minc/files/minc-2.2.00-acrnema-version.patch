@@ -1,0 +1,10 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -555,6 +555,7 @@ libvolume_io2_la_SOURCES = \
+ 	volume_io/Volumes/volume_cache.c \
+ 	volume_io/Volumes/volumes.c
+ 
++libacr_nema_la_LDFLAGS = -version-info 3:0:0
+ libacr_nema_la_SOURCES = \
+ 	conversion/Acr_nema/acr_io.c \
+ 	conversion/Acr_nema/dicom_client_routines.c \

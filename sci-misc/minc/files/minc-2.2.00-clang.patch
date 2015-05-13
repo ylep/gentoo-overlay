@@ -1,0 +1,17 @@
+Author: Alexander Ovchinnikov <sanek23994@gmail.com>
+Last-Changed: Sun, 16 Mar 2014 09:11:39 -0400
+Bugs-Debian: https://bugs.debian.org/741744
+Forwarded-Upstream: No
+Description: Build with clang compiler
+
+--- a/libsrc2/hyper.c
++++ b/libsrc2/hyper.c
+@@ -766,7 +766,7 @@ miget_real_value_hyperslab(mihandle_t vo
+             miicv_setint(icv, MI_ICV_DO_DIM_CONV, TRUE);
+           break;
+         default:
+-          return;
++          return (MI_ERROR);
+         }
+       }
+     result = miicv_attach(icv, file_id, var_id);

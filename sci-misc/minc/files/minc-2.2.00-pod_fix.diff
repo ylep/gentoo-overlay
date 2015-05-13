@@ -1,0 +1,47 @@
+From: Dominic Hargreaves <dom@earth.li>
+Subject: Fix POD syntax errors
+
+As of perl 5.18, pod2man aborts on POD syntax errors, so this patch
+fixes a FTBFS.
+
+Bug-Debian: http://bugs.debian.org/719502
+Forwarded: no
+
+--- a/progs/mincpik/mincpik.in
++++ b/progs/mincpik/mincpik.in
+@@ -576,8 +576,11 @@ font point size for the title
+ 
+ create an annotated bar to match the image (use height of the output image)
+ 
++=back
+ 
+ =head3 Image range and lookup table options
++
++=over 4
+    
+ =item B<--range>
+ 
+@@ -595,8 +598,11 @@ automatically determine image range usin
+ 
+ arguments to pass to minclookup
+ 
++=back
+ 
+ =head3 Slicing options
++
++=over 4
+    
+ =item B<-s> B<--slice>
+ 
+@@ -614,8 +620,11 @@ get a coronal (y) slice
+ 
+ get a sagital (x) slice
+ 
++=back
+ 
+ =head3 Triplanar options
++
++=over 4
+    
+ =item B<-t> B<--triplanar>
+ 

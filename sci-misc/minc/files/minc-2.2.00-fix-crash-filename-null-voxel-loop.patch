@@ -1,0 +1,22 @@
+Description: Fix crash when input file cannot be expanded
+ This patch fixes a segmentation fault that occurs when an input
+ file has a filename extension that indicates compression (e.g.
+ ".bz2"), but doesn't really contain content in the corresponding
+ compression format. In this case exit with an error message instead
+ of just crashing.
+Author: Martin Steghöfer <martin@steghoefer.eu>
+Bug-Debian: http://bugs.debian.org/716511
+
+--- a/libsrc/voxel_loop.c
++++ b/libsrc/voxel_loop.c
+@@ -2354,6 +2354,10 @@ PRIVATE int get_input_mincid(Loopfile_In
+       filename = miexpand_file(loopfile_info->input_files[file_num], NULL,
+                                loopfile_info->headers_only,
+                                &created_tempfile);
++      if (!filename) {
++         fprintf(stderr, "Could not expand file \"%s\"!\n", loopfile_info->input_files[file_num]);
++         exit(EXIT_FAILURE);
++      }
+       loopfile_info->input_mincid[index] = miopen(filename, NC_NOWRITE);
+       if (created_tempfile) {
+          (void) remove(filename);
