@@ -1,0 +1,57 @@
+diff -u 2.0.8/CMakeLists.txt 2.0.8-patched/CMakeLists.txt
+--- 2.0.8/CMakeLists.txt	2015-06-25 00:53:15.000000000 +0200
++++ 2.0.8-patched/CMakeLists.txt	2015-07-02 09:40:27.610254954 +0200
+@@ -187,7 +187,6 @@
+   resource.h
+   fileformats.h
+   version_string.h
+-  utf8proc-v1.1.6/utf8proc.h
+   
+   DicomFile.txx
+   SeriesHandler.txx
+@@ -291,7 +290,6 @@
+   resource.h
+   fileformats.h
+   version_string.h
+-  utf8proc-v1.1.6/utf8proc.h
+   
+   DicomFile.txx
+   SeriesHandler.txx
+@@ -306,6 +304,10 @@
+ ##  utf8proc-v1.1.6/utf8proc_data.c
+ ##  utf8proc-v1.1.6/utf8proc.h
+ ##)
++find_library ( utf8proc_LIB utf8proc )
++if ( ${utf8proc_LIB} )
++  message(SEND_ERROR "could not find utf8proc library")
++endif ()
+ 
+ if (WIN32)
+ 
+@@ -327,12 +329,12 @@
+ 
+   TARGET_LINK_LIBRARIES( MRIConvert
+     ${wxWidgets_LIBRARIES}
+-    ${CMAKE_SOURCE_DIR}/utf8proc-v1.1.6/libutf8proc.a
++    ${utf8proc_LIB}
+   )
+ 
+   TARGET_LINK_LIBRARIES( mcverter
+     ${wxWidgets_LIBRARIES}
+-    ${CMAKE_SOURCE_DIR}/utf8proc-v1.1.6/libutf8proc.a
++    ${utf8proc_LIB}
+   )
+ 
+ endif (WIN32)
+diff -u 2.0.8/DicomFile.cpp 2.0.8-patched/DicomFile.cpp
+--- 2.0.8/DicomFile.cpp	2015-06-25 00:53:15.000000000 +0200
++++ 2.0.8-patched/DicomFile.cpp	2015-07-02 09:44:09.995980017 +0200
+@@ -3,7 +3,7 @@
+ */
+ 
+ #include "DicomFile.h"
+-#include "utf8proc-v1.1.6/utf8proc.h"
++#include <libutf8proc/utf8proc.h>
+ 
+ using namespace jcs;
+ 
