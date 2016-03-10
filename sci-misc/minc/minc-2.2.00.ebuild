@@ -8,7 +8,7 @@ AUTOTOOLS_AUTORECONF=yes  # because of build system patches
 inherit autotools-multilib
 
 DESCRIPTION="Core library of the MINC medical imaging file format"
-HOMEPAGE="http://niftilib.sourceforge.net/"
+HOMEPAGE="http://www.bic.mni.mcgill.ca/ServicesSoftware/MINC"
 SRC_URI="http://packages.bic.mni.mcgill.ca/tgz/${P}.tar.gz"
 
 LICENSE="minc"
