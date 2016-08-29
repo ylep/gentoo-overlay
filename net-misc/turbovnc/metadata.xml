@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <use>
+    <flag name="java">The VNC client, vncviewer, is based on Java</flag>
+    <flag name="native">Build a native interface to the VNC client (vncviewer and helpers)</flag>
+    <flag name="server">Build the TurboVNC server</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">turbovnc</remote-id>
+  </upstream>
+</pkgmetadata>
