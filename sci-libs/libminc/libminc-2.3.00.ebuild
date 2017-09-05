@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/BIC-MNI/${PN}"
 SRC_URI="https://github.com/BIC-MNI/${PN}/archive/${PN}-${MY_PV}.tar.gz"
 S="${WORKDIR}/${PN}-${PN}-${MY_PV}"
 
-LICENSE="minc"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="minc1"
